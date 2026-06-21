@@ -1,0 +1,32 @@
+# External OSS checkouts and large artifacts
+external/
+data/
+runs/
+cache/
+models/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+
+# Secrets / local credentials
+.env
+.env.*
+!.env.example
+kaggle.json
+credentials*.json
+*_password*
+*_token*
+
+# Python / Node / Rust local outputs
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+node_modules/
+target/
+.DS_Store
+
+local_submissions/

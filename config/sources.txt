@@ -1,0 +1,43 @@
+# Primary / official sources checked on 2026-06-20
+https://ptcg-abc.pokemon.co.jp/
+https://ptcg-abc.pokemon.co.jp/faq/index.html
+https://www.kaggle.com/competitions/pokemon-tcg-ai-battle
+https://www.kaggle.com/competitions/pokemon-tcg-ai-battle/overview
+https://www.kaggle.com/competitions/pokemon-tcg-ai-battle/data
+https://www.kaggle.com/competitions/pokemon-tcg-ai-battle/rules
+https://www.kaggle.com/competitions/pokemon-tcg-ai-battle/leaderboard
+https://www.kaggle.com/competitions/pokemon-tcg-ai-battle/discussion
+https://www.kaggle.com/competitions/pokemon-tcg-ai-battle-challenge-strategy
+https://www.kaggle.com/competitions/pokemon-tcg-ai-battle-challenge-strategy/overview
+https://www.kaggle.com/competitions/pokemon-tcg-ai-battle-challenge-strategy/rules
+https://www.kaggle.com/competitions/pokemon-tcg-ai-battle-challenge-strategy/projects
+https://matsuoinstitute.github.io/cabt/
+https://github.com/Kaggle/kaggle-cli/blob/main/docs/simulation_competitions.md
+
+# Official Kaggle discussion / notebooks checked
+https://www.kaggle.com/competitions/pokemon-tcg-ai-battle/discussion/708584
+https://www.kaggle.com/competitions/pokemon-tcg-ai-battle/discussion/708586
+https://www.kaggle.com/competitions/pokemon-tcg-ai-battle/discussion/708492
+https://www.kaggle.com/competitions/pokemon-tcg-ai-battle/discussion/708493
+https://www.kaggle.com/competitions/pokemon-tcg-ai-battle/discussion/709160
+https://www.kaggle.com/competitions/pokemon-tcg-ai-battle/discussion/708869
+https://www.kaggle.com/competitions/pokemon-tcg-ai-battle/discussion/709494
+https://www.kaggle.com/code/kiyotah/a-sample-rule-based-agent-iono-s-deck
+https://www.kaggle.com/code/kiyotah/a-sample-rule-based-agent-dragapult-ex-deck
+https://www.kaggle.com/code/kiyotah/a-sample-rule-based-agent-mega-abomasnow-ex-deck
+https://www.kaggle.com/code/kiyotah/a-sample-rule-based-agent-mega-lucario-ex-deck
+https://www.kaggle.com/code/kiyotah/reinforcement-learning-and-mcts-sample-code
+https://www.kaggle.com/code/kiyotah/how-to-output-local-battle-as-json-and-view
+
+# Public episode datasets checked
+https://www.kaggle.com/datasets/kaggle/pokemon-tcg-ai-battle-episodes-index
+https://www.kaggle.com/datasets/kaggle/pokemon-tcg-ai-battle-episodes-2026-06-16
+https://www.kaggle.com/datasets/kaggle/pokemon-tcg-ai-battle-episodes-2026-06-17
+https://www.kaggle.com/datasets/kaggle/pokemon-tcg-ai-battle-episodes-2026-06-18
+https://www.kaggle.com/datasets/kaggle/pokemon-tcg-ai-battle-episodes-2026-06-19
+
+# Kaggle general explanation
+https://www.kaggle.com/docs/competitions
+
+# Codex official docs checked via Codex manual helper
+https://developers.openai.com/codex/codex-manual.md
