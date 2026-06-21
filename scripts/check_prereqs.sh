@@ -10,7 +10,7 @@ check_cmd() {
   local cmd="$2"
   local required="$3"
   if command -v "$cmd" >/dev/null 2>&1; then
-    printf 'OK   %-18s %s\n' "$name" "$(command -v "$cmd")"
+    printf 'OK   %-18s found\n' "$name"
     ok=$((ok+1))
   else
     if [ "$required" = "required" ]; then
@@ -24,7 +24,7 @@ check_cmd() {
 }
 
 printf '%s\n' '== PTCG ABC Codex Starter prerequisite check =='
-printf 'cwd: %s\n' "$(pwd)"
+printf 'repo: %s\n' "$(basename "$(pwd)")"
 printf '\n-- commands --\n'
 check_cmd git git required
 check_cmd python3 python3 required
@@ -76,7 +76,7 @@ else
 fi
 
 printf '\n-- disk --\n'
-df -h . | sed -n '1,2p'
+df -h . | awk 'NR==2 {print "available_disk=" $4}'
 
 printf '\nsummary: ok=%d warn=%d fail=%d\n' "$ok" "$warn" "$fail"
 if [ "$fail" -gt 0 ]; then

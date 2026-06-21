@@ -10,12 +10,19 @@ checkpoints/
 *.ckpt
 *.safetensors
 *.onnx
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.log
+*.jsonl
 
 # Secrets / local credentials
 .env
 .env.*
 !.env.example
 kaggle.json
+.kaggle/
 credentials*.json
 *_password*
 *_token*
@@ -25,8 +32,17 @@ credentials*.json
 venv/
 __pycache__/
 *.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
 node_modules/
 target/
+dist/
+build/
 .DS_Store
+.idea/
+.vscode/
 
 local_submissions/

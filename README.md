@@ -13,6 +13,7 @@ This repository demonstrates a practical workflow for building, validating, and 
 - Public metadata snapshot helper for leaderboard and episode-index research.
 - Daily submission quota estimator based on Kaggle UTC timestamps.
 - Experiment summary documenting the path from baseline agents to stronger Alakazam variants.
+- Public-repository audit helper for catching local paths, artifacts, and credential-like values before pushing.
 
 ## Competition links
 
@@ -39,7 +40,8 @@ This repository demonstrates a practical workflow for building, validating, and 
 │   ├── fetch_public_metadata.sh
 │   ├── package_submission.sh
 │   ├── eval_submission_pair.py
-│   └── kaggle_submission_quota.py
+│   ├── kaggle_submission_quota.py
+│   └── public_repo_audit.py
 └── templates/submission_minimal/
     └── main.py
 ```
@@ -53,6 +55,19 @@ data/               # competition data
 runs/               # packaged submissions and experiment outputs
 .venv/              # Python virtual environment
 ```
+
+## Public hygiene check
+
+Before pushing public-facing changes, run:
+
+```bash
+python3 scripts/public_repo_audit.py
+git status --short --ignored
+```
+
+The audit checks tracked files for high-confidence local absolute paths, private machine/user identifiers, credential-like values, local submission packages, raw replay/log artifacts, and unexpectedly large files.
+
+The repository is designed so that real candidates, Kaggle data, metadata caches, experiment logs, and generated packages stay in ignored local-only directories.
 
 ## Quick start
 
@@ -123,3 +138,4 @@ See [`docs/experiment-summary.md`](docs/experiment-summary.md) for the sanitized
 - Do not redistribute competition data outside the competition's permitted channels.
 - Keep full card lists, raw episode replays, and generated submission packages out of git.
 - Treat local evaluation results as a filter, not as a replacement for live validation.
+- Run `scripts/public_repo_audit.py` before publishing polished documentation or showcasing the repository.
