@@ -33,6 +33,18 @@ This repository is a public workspace for researching and iterating on agents fo
 5. Submit only candidates with a clear hypothesis and validation evidence.
 6. Capture sanitized experiment results in docs, not raw private logs.
 
+## Best-submission registry
+
+- Whenever a Kaggle submission reaches a new confirmed best public score, record
+  enough local information to re-submit the exact implementation later.
+- Keep the detailed registry in ignored local storage, currently
+  `runs/best-submission-registry.md`.
+- Each best-record entry should include the submission ref, Kaggle filename,
+  confirmed score, candidate name, relative source directory, relative package
+  path, package SHA-256, and a short strategy summary.
+- Do not commit packaged submissions, raw replays, raw logs, or competition
+  datasets just to preserve this registry.
+
 ## Done criteria for public changes
 
 - No local absolute paths.
