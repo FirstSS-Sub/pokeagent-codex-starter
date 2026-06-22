@@ -45,6 +45,16 @@ This repository is a public workspace for researching and iterating on agents fo
 - Do not commit packaged submissions, raw replays, raw logs, or competition
   datasets just to preserve this registry.
 
+
+## Card-name reporting rule
+
+- For user-facing Japanese explanations, use official Japanese card names from
+  the competition JP card data when available. Do not transliterate English
+  card names into katakana by guesswork.
+- When the internal code/candidate name uses an English card name, optionally
+  show it in parentheses after the official Japanese name, e.g.
+  `キチキギスex (Fezandipiti ex)`.
+
 ## Done criteria for public changes
 
 - No local absolute paths.
