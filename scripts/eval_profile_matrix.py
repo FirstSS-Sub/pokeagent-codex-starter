@@ -63,6 +63,7 @@ def command_for_pair(
     games: int,
     max_steps: int,
     docker: bool,
+    quiet_eval: bool,
 ) -> list[str]:
     inner = [
         "python",
@@ -80,6 +81,8 @@ def command_for_pair(
         "--max-steps",
         str(max_steps),
     ]
+    if quiet_eval:
+        inner.append("--quiet")
     if not docker:
         return inner
     return [
@@ -184,6 +187,7 @@ def run_matrix(args: argparse.Namespace) -> int:
             args.games,
             args.max_steps,
             args.docker,
+            args.quiet_eval,
         )
         print(
             f"PAIR candidate={candidate_label} bucket={bucket.get('key')} "
@@ -260,6 +264,7 @@ def main() -> int:
     parser.add_argument("--include-role", action="append", help="Only evaluate buckets with this role; repeatable.")
     parser.add_argument("--limit-buckets", type=int)
     parser.add_argument("--docker", action="store_true")
+    parser.add_argument("--quiet-eval", action="store_true", help="Pass --quiet to eval_submission_pair.py.")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--require-all-buckets", action="store_true")
     parser.add_argument("--stop-on-failure", action="store_true")

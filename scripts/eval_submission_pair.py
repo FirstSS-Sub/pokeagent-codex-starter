@@ -180,6 +180,7 @@ def main() -> int:
     parser.add_argument("--max-steps", type=int, default=2500)
     parser.add_argument("--label0", default="agent0")
     parser.add_argument("--label1", default="agent1")
+    parser.add_argument("--quiet", action="store_true", help="Suppress per-game rows and print only the summary.")
     args = parser.parse_args()
 
     # Import cg from agent0 by default; all official samples bundle identical cg/.
@@ -229,12 +230,13 @@ def main() -> int:
             outcome = "error"
         out["outcome0"] = outcome
         rows.append(out)
-        print(
-            f"game={game + 1:03d} seat={candidate_seat} outcome={outcome:5s} "
-            f"result={result} steps={out['steps']} turn={out['turn']} "
-            f"fallbacks={out['fallbacks']} error={out['error'] or ''}",
-            flush=True,
-        )
+        if not args.quiet:
+            print(
+                f"game={game + 1:03d} seat={candidate_seat} outcome={outcome:5s} "
+                f"result={result} steps={out['steps']} turn={out['turn']} "
+                f"fallbacks={out['fallbacks']} error={out['error'] or ''}",
+                flush=True,
+            )
 
     wins = sum(1 for row in rows if row["outcome0"] == "win")
     losses = sum(1 for row in rows if row["outcome0"] == "loss")
