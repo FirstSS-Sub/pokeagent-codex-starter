@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "description": "Example proxy map for scripts/eval_profile_matrix.py. Copy to runs/eval_proxy_map.local.json and point paths at local ignored submissions.",
+  "buckets": {
+    "Alakazam": [
+      {
+        "label": "alakazam_reference",
+        "path": "local_submissions/example-alakazam",
+        "role": "core_holdout"
+      }
+    ],
+    "Hop's Trevenant": [
+      {
+        "label": "hop_trevenant_reference",
+        "path": "local_submissions/example-hop-trevenant",
+        "role": "core_holdout"
+      }
+    ],
+    "Mega Lucario ex": [
+      {
+        "label": "mega_lucario_reference",
+        "path": "local_submissions/example-mega-lucario",
+        "role": "core_holdout"
+      }
+    ],
+    "Dragapult ex": [
+      {
+        "label": "dragapult_tuning_reference",
+        "path": "local_submissions/example-dragapult",
+        "role": "tuning"
+      }
+    ]
+  }
+}

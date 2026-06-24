@@ -12,6 +12,7 @@ This repository demonstrates a practical workflow for building, validating, and 
 - Local agent-vs-agent evaluation harness using the bundled competition engine.
 - Public metadata snapshot helper for leaderboard and episode-index research.
 - Daily submission quota estimator based on Kaggle UTC timestamps.
+- Loop-engineering helpers for versioned meta profiles, experiment ledgers, and profile-weighted local evaluation.
 - Experiment summary documenting the path from baseline agents to stronger Alakazam variants.
 - Public-repository audit helper for catching local paths, artifacts, and credential-like values before pushing.
 
@@ -33,6 +34,7 @@ This repository demonstrates a practical workflow for building, validating, and 
 │   ├── research-brief.md             # Competition overview and constraints
 │   ├── codex-battle-plan.md          # AI-assisted development plan
 │   ├── experiment-summary.md         # Sanitized experiment summary
+│   ├── loop-engineering-workflow.md  # Meta-profile + ledger research workflow
 │   └── setup-checklist.md
 ├── prompts/                          # Reusable Codex task prompts
 ├── scripts/
@@ -40,6 +42,9 @@ This repository demonstrates a practical workflow for building, validating, and 
 │   ├── fetch_public_metadata.sh
 │   ├── package_submission.sh
 │   ├── eval_submission_pair.py
+│   ├── build_meta_eval_profile.py
+│   ├── eval_profile_matrix.py
+│   ├── experiment_ledger.py
 │   ├── kaggle_submission_quota.py
 │   └── public_repo_audit.py
 └── templates/submission_minimal/
@@ -105,6 +110,29 @@ docker run --rm -i --platform linux/amd64 \
 ```
 
 The evaluator reports wins, losses, draws, fallback rate, and runtime errors. This is useful for regression testing and known-matchup tuning, but it does not fully reproduce the live Kaggle opponent pool.
+
+## Loop-engineering workflow
+
+For longer research loops, use a versioned meta-evaluation profile and a local
+experiment ledger before deciding whether a candidate is worth a Kaggle
+submission:
+
+```bash
+python3 scripts/build_meta_eval_profile.py --print-summary
+python3 scripts/experiment_ledger.py init
+cp config/eval_proxy_map.example.json runs/eval_proxy_map.local.json
+python3 scripts/eval_profile_matrix.py \
+  --profile runs/meta_eval_profile_<profile_id>.json \
+  --proxy-map runs/eval_proxy_map.local.json \
+  --candidate champion=local_submissions/current-champion \
+  --candidate challenger=local_submissions/new-candidate \
+  --docker \
+  --dry-run
+```
+
+See [`docs/loop-engineering-workflow.md`](docs/loop-engineering-workflow.md)
+for the full anti-overfitting process: public-meta weighting, tuning/holdout
+separation, progressive evaluation, and submission gates.
 
 ## Kaggle submission quota helper
 
