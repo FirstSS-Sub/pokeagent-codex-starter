@@ -69,13 +69,17 @@ rm -f "$out_abs"
     exit 1
   fi
 
-  tar \
+  COPYFILE_DISABLE=1 tar \
     --exclude='__pycache__' \
     --exclude='*/__pycache__' \
     --exclude='*.pyc' \
     --exclude='.pytest_cache' \
     --exclude='.mypy_cache' \
     --exclude='.DS_Store' \
+    --exclude='._*' \
+    --exclude='*/._*' \
+    --exclude='__MACOSX' \
+    --exclude='*/__MACOSX' \
     --exclude='*.tar' \
     --exclude='*.tar.gz' \
     --exclude='*.zip' \
