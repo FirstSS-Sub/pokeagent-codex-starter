@@ -106,7 +106,51 @@ The ledger stores per-candidate, per-bucket, per-proxy results and weighted
 score components. It should be used for submission decisions instead of
 one-off impressions.
 
-### 4. Profile matrix evaluation
+### 4. Variance-aware loss analysis
+
+Pokémon TCG outcomes contain meaningful variance from opening hands, prize
+cards, draw order, and matchup pairing. Do not discard a candidate because of
+one or two bad live games.
+
+For every important loss cluster, classify the likely cause before changing the
+agent or deck:
+
+1. **Expected variance / unlucky setup**
+   - severe opening-hand or prize-card problem,
+   - key evolution or energy pieces unavailable for several turns,
+   - opponent high-rolls while the agent follows the intended plan.
+2. **Structural matchup weakness**
+   - the archetype's normal game plan loses the prize race,
+   - damage thresholds do not line up,
+   - the opponent repeatedly reaches an unavoidable board state.
+3. **Policy / play-sequencing mistake**
+   - wrong attacker promoted,
+   - energy attached to a low-value target,
+   - search, draw, disruption, or gust effect used at the wrong time,
+   - missed lethal or missed prize-race line.
+4. **Deck consistency issue**
+   - the agent often cannot execute its intended setup even in neutral games,
+   - key counts are too low,
+   - tech cards dilute the core plan.
+5. **Proxy or evidence gap**
+   - local proxy does not behave like the public opponent,
+   - replay sample is too small,
+   - leaderboard score is still under-evaluated.
+
+Use local simulation in batches, not anecdotes:
+
+- run enough games to separate signal from variance when possible,
+- compare the challenger and champion on the same seeded/proxy profile,
+- inspect representative replays for both wins and losses,
+- keep Wilson-style uncertainty or at least sample-size notes in the ledger,
+- prefer "hold / gather more evidence" when the measured difference is within
+  normal variance.
+
+This rule is especially important for live Kaggle results. A candidate with a
+good local win rate can lose two public games in a row by variance; that is not
+by itself a reason to patch the latest loss.
+
+### 5. Profile matrix evaluation
 
 Dry-run the matrix:
 
@@ -159,6 +203,11 @@ Recommended gates:
    - ホップのオーロット: no worse than champion by 2.0pp.
 7. A targeted anti-ドラパルトex hypothesis should improve ドラパルトex by
    roughly 3.0pp or more, without violating the core no-regression gates.
+8. A live loss must be triaged with the variance-aware loss categories above
+   before it is treated as an agent/deck defect.
+9. If a candidate loses only by small-sample variance and still clears the
+   profile gates, keep it in the candidate pool instead of immediately
+   reverting or overfitting a patch.
 
 ## Night loop outline
 
